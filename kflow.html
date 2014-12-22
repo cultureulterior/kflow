@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Webgl Monochrome</title>
-  <script type='text/javascript' src='three.min.js'></script>
-  <style type='text/css'>
-  </style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Webgl Monochrome</title>
+<script type='text/javascript' src='three.min.js'></script>
+<script type="text/javascript" src="delaunay.js"></script>
+<link rel="stylesheet" type="text/css" href="html5-doctor-reset-stylesheet.css"/>
+<style type='text/css'>
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+</style>
 <script type='text/javascript'>//<![CDATA[
 window.onload=function(){
 var scene = new THREE.Scene();
@@ -38,8 +49,8 @@ matrix.set(1, Syx, Szx, 0,
 
 geometries = {};
 materials = {};
-
-    var image = document.getElementById("67");
+    a="67"
+    var image = document.getElementById(a);
     var texture = new THREE.Texture(image);
     texture.magFilter = THREE.NearestFilter;
     texture.needsUpdate = true;
@@ -59,22 +70,16 @@ materials = {};
     image.style.position="absolute";
     image.style.left='-500px';
 
-    for (var x = 0; x<window.innerHeight; x+=400 ) {
-        for (var y = 0; y<window.innerHeight; y+=400 ) {
-    for (var i = 400; i > 0; i--) {
-        if (Math.random() < list[a]["f"]) {
+    for (var x = 0; x<window.innerWidth; x+=130 ) {
+
+        for (var y = 0; y<window.innerHeight; y+=33 ) {
+          offset = 0
+          if(y%66!=0) { offset=65 }
             var sprote = new THREE.Mesh(geometries[a], materials[a]);
             //sprote.name = a;
-            if (list[a]["b"]) {
-                sprote.position.set(Math.round(Math.random() * 400) +x , i + y, -150);
-            } else {
-                sprote.position.set(Math.round(Math.random() * 400) + x, i + y, image.height / 2 - 100);
-            }
+                sprote.position.set(x+offset, y, image.height / 2 - 100);
             scene.add(sprote);
-        }
-    }}}
-
-})
+        }}
 scene.add(cube);
 camera.position.z = 100;
 var SELECTED;
@@ -113,8 +118,6 @@ render();
 }//]]>
 
 </script>
-
-
 </head>
 <body>
 <img id="67" src="isometricLandscape/PNG/landscapeTiles_067.png"/>
