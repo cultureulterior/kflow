@@ -50,7 +50,7 @@ class Xorb
   n 78,canal(se,ne),grass(sw,nw)
   n 79,rotate(78)
   n 23,road(sw,ne),canal(nw,se)
-  n 27,beach(se,nw),sand(ne),water(sw)
+  n 27,beach(se,nw),grass(ne),water(sw)
   n 35,rotate(27,cw)
   n 34,rotate(35)
   n 42,rotate(35,cw)
@@ -96,12 +96,3 @@ class Xorb
 end
 
 p $n
-
-#          nw sw se ne
-#uphillcut 0 1 4 2
-#uphillbankedcut 3 6 11 7
-#sharpuphillcanal 13 8 5 9
-#hill 10 15 22 16
-#hillcanal nesw:19 nwse:25
-#sharphillcorner n:21 s:36 e:28 w:29
-#bankedcutbridge 30 38

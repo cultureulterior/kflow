@@ -5,6 +5,7 @@
 <title>Webgl Monochrome</title>
 <script type='text/javascript' src='three.min.js'></script>
 <script type="text/javascript" src="delaunay.js"></script>
+<script type="text/javascript" src="sprintf.js"></script>
 <link rel="stylesheet" type="text/css" href="html5-doctor-reset-stylesheet.css"/>
 <style type='text/css'>
 html {
@@ -120,6 +121,10 @@ render();
 </script>
 </head>
 <body>
-<img id="67" src="isometricLandscape/PNG/landscapeTiles_067.png"/>
+<script>
+for (var y = 0; y<=127; y+=1 ) {
+document.write(sprintf('<img id="%i" src="isometricLandscape/PNG/landscapeTiles_%03i.png" style="position:absolute;left:-500px;"/>',y,y))
+}
+</script>
 </body>
 </html>
