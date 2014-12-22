@@ -20,6 +20,11 @@ body {
 </style>
 <script type='text/javascript'>//<![CDATA[
 window.onload=function(){
+//var x = new Array(~~window.innerWidth/130);
+//for (var i = 0; i < x.size; i++) {
+//  x[i] = new Array(~~window.innerHeight/33);
+//}
+
 var scene = new THREE.Scene();
 var camera = new THREE.OrthographicCamera(0, window.innerWidth, window.innerHeight, 0, 0, window.innerWidth);
 var renderer = new THREE.WebGLRenderer();
@@ -34,7 +39,7 @@ var material = new THREE.MeshBasicMaterial({
 });
 var cube = new THREE.Mesh(geometry, material);
 cube.rotation.x += 0.5;
-cube.position.set(100, 100, -70);
+cube.position.set(100, 100, 0);
 
 var Syx = 0,
     Szx = 0,
@@ -48,9 +53,9 @@ matrix.set(1, Syx, Szx, 0,
            Sxz, Syz, 1, 0,
            0, 0, 0, 1);
 
-geometries = {};
-materials = {};
-    a="67"
+var geometries = {};
+var materials = {};
+var a="67";
     var image = document.getElementById(a);
     var texture = new THREE.Texture(image);
     texture.magFilter = THREE.NearestFilter;
@@ -71,16 +76,16 @@ materials = {};
     image.style.position="absolute";
     image.style.left='-500px';
 
-    for (var x = 0; x<window.innerWidth; x+=130 ) {
-
-        for (var y = 0; y<window.innerHeight; y+=33 ) {
-          offset = 0
-          if(y%66!=0) { offset=65 }
-            var sprote = new THREE.Mesh(geometries[a], materials[a]);
-            //sprote.name = a;
-                sprote.position.set(x+offset, y, image.height / 2 - 100);
-            scene.add(sprote);
-        }}
+for (var x = 0; x<window.innerWidth; x+=130 ) {
+  for (var y = 0; y<window.innerHeight; y+=33 ) {
+    offset = 0
+    if(y%66!=0) { offset=65 }
+    var sprote = new THREE.Mesh(geometries[a], materials[a]);
+    //sprote.name = a;
+    sprote.position.set(x+offset, y, image.height / 2 - 100);
+    scene.add(sprote);
+  }
+}
 scene.add(cube);
 camera.position.z = 100;
 var SELECTED;
